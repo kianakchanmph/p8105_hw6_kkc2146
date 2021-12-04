@@ -72,6 +72,59 @@ mutate(
 
 Propose a regression model for birthweight. This model may be based on a hypothesized structure for the factors that underly birthweight, on a data-driven model-building process, or a combination of the two. Describe your modeling process and show a plot of model residuals against fitted values – use add_predictions and add_residuals in making this plot.
 
+Model 1 
+```{r}
+birthweight_mod1 = lm(bwt ~ babysex + malform + mrace, data = birthweight_data)
+broom::tidy(birthweight_mod1)
+```
+
+Resudual/Predictions Diagnostics 
+```{r}
+birthweight_data %>%
+  modelr::add_predictions(birthweight_mod1 ) %>% 
+  modelr::add_residuals(birthweight_mod1 ) %>% 
+  ggplot(aes(x = pred, y = resid)) + geom_point()
+```
+There appear to be both outliers and residuals in the birthweight_data dataset. 
+
+Model 2 
+```{r}
+birthweight_mod2 = lm(bwt ~ blength + gaweeks, data = birthweight_data)
+broom::tidy(birthweight_mod1)
+```
+Model 3
+```{r}
+birthweight_mod3 = lm(bwt ~ bhead + blength + babysex + bhead*blength + bhead*babysex + blength*babysex, data = birthweight_data)
+broom::tidy(birthweight_mod1)
+```
+
+Make this comparison in terms of the cross-validated prediction error; use crossv_mc and functions in purrr as appropriate.
+
+```{r}
+cv_dataframe = 
+crossv_mc(birthweight_data, 100) %>%
+  mutate(
+    birthweight_mod1 = map(train, ~ lm(bwt ~ babysex + malform + mrace, data = birthweight_data)),
+    birthweight_mod2 = map(train, ~ lm(bwt ~ blength + gaweeks, data = birthweight_data)),
+    birthweight_mod3 = map (train, ~ lm(bwt ~ bhead + blength + babysex + bhead*blength + bhead*babysex + blength*babysex, data = birthweight_data))) %>%
+  
+  mutate(
+    rmse_birthweight_mod1 = map2_dbl(birthweight_mod1, test, ~rmse(model = .x, data = .y)), 
+    rmse_birthweight_mod2 = map2_dbl(birthweight_mod2, test, ~rmse(model = .x, data = .y)), 
+    rmse_birthweight_mod3 = map2_dbl(birthweight_mod3, test, ~rmse(model = .x, data = .y)))
+
+cv_dataframe %>% 
+  select(starts_with("rmse")) %>% 
+  pivot_longer(everything(), names_to = "model", values_to = "rmse", names_prefix = "rmse_") %>%
+  ggplot(aes(x = model, y = rmse)) + geom_violin()
+```
+Bawed on the violin plot, it appears that birthweight_mod3 has the lowest rmse score, which indicates that it is the best model. 
+
+
+
+
+
+
 
 
 

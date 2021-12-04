@@ -1,0 +1,28 @@
+{
+    "id": "6DD0327D",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1638661223927.0,
+    "source_on_save": false,
+    "relative_order": 12,
+    "properties": {
+        "id": "bf697273782b416ba9c7dcd2862f6827",
+        "name": "plot_cv",
+        "title": "plot_cv",
+        "language": "R",
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 7863352157037133846,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1638661223927,
+    "read_only": false,
+    "read_only_alternatives": []
+}

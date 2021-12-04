@@ -1,0 +1,28 @@
+{
+    "id": "2176A47C",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1638660600981.0,
+    "source_on_save": false,
+    "relative_order": 7,
+    "properties": {
+        "id": "4ab83e25408c4bfa86052cb5a37602de",
+        "name": "birthweight_mod1",
+        "title": "birthweight_mod1",
+        "language": "R",
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 7863352157037133846,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1638660600981,
+    "read_only": false,
+    "read_only_alternatives": []
+}

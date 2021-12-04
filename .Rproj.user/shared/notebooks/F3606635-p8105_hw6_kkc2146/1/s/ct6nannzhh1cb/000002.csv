@@ -1,0 +1,2 @@
+"0","birthweight_mod3 = lm(bwt ~ bhead + blength + babysex + bhead*blength + bhead*babysex + blength*babysex, data = birthweight_data)"
+"0","broom::tidy(birthweight_mod1)"

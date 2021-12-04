@@ -1,0 +1,2 @@
+"0","birthweight_mod1 = lm(bwt ~ babysex + malform + mrace, data = birthweight_data)"
+"0","broom::tidy(birthweight_mod1)"

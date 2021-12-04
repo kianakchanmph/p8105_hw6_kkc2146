@@ -1,0 +1,4 @@
+"0","birthweight_data %>%"
+"0","  modelr::add_predictions(birthweight_mod1 ) %>% "
+"0","  modelr::add_residuals(birthweight_mod1 ) %>% "
+"0","  ggplot(aes(x = pred, y = resid)) + geom_point()"
