@@ -1,0 +1,79 @@
+---
+title: "Homework6" 
+Name: "Kiana Chan"
+Date: "12/4/21"
+output: github_document
+---
+
+
+```{r setup, include = FALSE}
+library(tidyverse)
+library(modelr)
+library(mgcv)
+library(rvest) 
+library(broom)
+
+knitr::opts_chunk$set(
+  fig.width = 6,
+  fig.asp = .6,
+  out.width = "90%"
+)
+
+theme_set(theme_minimal() + theme(legend.position = "bottom"))
+
+options(
+  ggplot2.continuous.colour = "viridis",
+  ggplot2.continuous.fill = "viridis"
+)
+
+scale_colour_discrete = scale_colour_viridis_d
+scale_fill_discrete = scale_fill_viridis_d
+```
+
+## Problem 1 
+In this problem, you will analyze data gathered to understand the effects of several variables on a child’s birthweight. This dataset, available here, consists of roughly 4000 children and includes the following variables:
+
+```{r}
+birthweight_data = read_csv("./birthweight.csv") %>% 
+janitor::clean_names()
+```
+
+Convert numeric variables to factor variables. 
+
+```{r}
+birthweight_data = birthweight_data %>% 
+  mutate(
+    babysex = case_when(
+      babysex == 1 ~ "male", 
+      babysex == 2 ~ "female"),
+    frace = case_when(
+      frace == 1 ~ "white", 
+      frace == 2 ~ "black", 
+      frace == 3 ~ "asian", 
+      frace == 4 ~ "puerto rican", 
+      frace == 8 ~ "other", 
+      frace == 9 ~ "unknown"), 
+    malform = case_when(
+      malform == 0 ~ "absent", 
+      malform == 1 ~ "present"),
+    mrace = case_when(
+      mrace == 1 ~ "white", 
+      mrace == 2 ~ "black", 
+      mrace == 3 ~ "asian", 
+      mrace == 4 ~ "puerto rican", 
+      mrace == 8 ~ "other")) %>%
+  
+mutate(
+  babysex = as.factor(babysex), 
+  frace = as.factor(frace), 
+  malform = as.factor(malform), 
+  mrace = as.factor(mrace))
+```
+
+Propose a regression model for birthweight. This model may be based on a hypothesized structure for the factors that underly birthweight, on a data-driven model-building process, or a combination of the two. Describe your modeling process and show a plot of model residuals against fitted values – use add_predictions and add_residuals in making this plot.
+
+
+
+
+
+
