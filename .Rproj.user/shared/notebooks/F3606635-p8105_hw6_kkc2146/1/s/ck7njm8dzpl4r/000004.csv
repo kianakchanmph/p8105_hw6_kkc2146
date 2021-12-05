@@ -1,0 +1,4 @@
+"0","CI_rsquared = r_squared_boot %>% "
+"0","  summarize("
+"0","    ci_lower = quantile(r.squared, 0.025), "
+"0","    ci_upper = quantile(r.squared, 0.975))"

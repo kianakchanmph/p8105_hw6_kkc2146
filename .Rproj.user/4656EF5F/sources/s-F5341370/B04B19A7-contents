@@ -118,6 +118,8 @@ cv_dataframe %>%
   pivot_longer(everything(), names_to = "model", values_to = "rmse", names_prefix = "rmse_") %>%
   ggplot(aes(x = model, y = rmse)) + geom_violin()
 ```
+
+
 Based on the violin plot, it appears that birthweight_mod3 has the lowest rmse score, which indicates that it is the best model. 
 
 ## Problem 2 
@@ -163,7 +165,7 @@ Results for R Squared Values
 r_squared_boot = boot_straps %>% 
   mutate(
     models = map(strap_sample, ~lm(tmax ~ tmin, data = .x)), 
-    results = map(models, broom::tidy)) %>% 
+    results = map(models, broom::glance)) %>% 
   select(-strap_sample, -models) %>% 
   unnest(results)
 r_squared_boot
@@ -172,10 +174,22 @@ r_squared_boot
 
 ```{r}
 r_squared_boot %>% 
-  ggplot(aes(x = r.squared)) + geom_density()
+ggplot(aes(x = r.squared)) + geom_density()
 ```
 
 
+Calculate 95% Confidence Interval. 
+
+
+```{r}
+CI_rsquared = r_squared_boot %>% 
+  summarize(
+    ci_lower = quantile(r.squared, 0.025), 
+    ci_upper = quantile(r.squared, 0.975))
+```
+
+
+The confidence interval for r-squared is (0.8941777- 0.9271884).
 
 
 

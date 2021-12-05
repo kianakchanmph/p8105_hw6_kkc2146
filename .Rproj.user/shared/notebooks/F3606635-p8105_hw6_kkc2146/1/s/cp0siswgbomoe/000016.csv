@@ -1,9 +1,7 @@
 "0","r_squared_boot = boot_straps %>% "
 "0","  mutate("
 "0","    models = map(strap_sample, ~lm(tmax ~ tmin, data = .x)), "
-"0","    results = map(models, broom::tidy)) %>% "
+"0","    results = map(models, broom::glance)) %>% "
 "0","  select(-strap_sample, -models) %>% "
 "0","  unnest(results)"
-"0","dplyr::select(r.squared)"
-"2","Error in dplyr::select(r.squared) : object 'r.squared' not found
-"
+"0","r_squared_boot"
