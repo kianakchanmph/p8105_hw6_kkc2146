@@ -3,7 +3,7 @@
     "path": "/Applications/Documents/GIT for real/homework/homework 6/p8105_hw6_kkc2146/p8105_hw6_kkc2146.rmd",
     "project_path": "p8105_hw6_kkc2146.rmd",
     "type": "r_markdown",
-    "hash": "1673110302",
+    "hash": "3746148167",
     "contents": "",
     "dirty": false,
     "created": 1638655954119.0,
@@ -12,16 +12,16 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "122,0",
-        "scrollLine": "111",
+        "cursorPosition": "175,3",
+        "scrollLine": "159",
         "last_setup_crc32": "F5341370bf60d8df"
     },
     "folds": "",
-    "lastKnownWriteTime": 1638661363,
+    "lastKnownWriteTime": 1638663344,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1638661363415,
+    "last_content_update": 1638663344364,
     "read_only": false,
     "read_only_alternatives": []
 }

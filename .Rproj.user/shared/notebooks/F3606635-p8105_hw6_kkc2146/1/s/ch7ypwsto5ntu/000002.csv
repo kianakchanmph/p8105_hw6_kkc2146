@@ -1,0 +1,17 @@
+"0","weather_df = "
+"0","  rnoaa::meteo_pull_monitors("
+"0","    c(""USW00094728""),"
+"0","    var = c(""PRCP"", ""TMIN"", ""TMAX""), "
+"0","    date_min = ""2017-01-01"","
+"0","    date_max = ""2017-12-31"") %>%"
+"0","  mutate("
+"0","    name = recode(id, USW00094728 = ""CentralPark_NY""),"
+"0","    tmin = tmin / 10,"
+"0","    tmax = tmax / 10) %>%"
+"0","  select(name, id, everything())"
+"2","using cached file: ~/Library/Caches/R/noaa_ghcnd/USW00094728.dly
+"
+"2","date created (size, mb): 2021-10-05 11:21:56 (7.602)
+"
+"2","file min/max dates: 1869-01-01 / 2021-10-31
+"

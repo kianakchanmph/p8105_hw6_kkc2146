@@ -1,0 +1,6 @@
+"0","boot_straps = tibble("
+"0","    strap_number = 1:5000,"
+"0","    strap_sample = rerun(5000, boot_sample(weather_df))"
+"0","  )"
+"0",""
+"0","boot_straps"
