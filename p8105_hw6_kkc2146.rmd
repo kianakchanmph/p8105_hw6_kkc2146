@@ -176,6 +176,7 @@ r_squared_boot
 r_squared_boot %>% 
 ggplot(aes(x = r.squared)) + geom_density()
 ```
+The distribution centers around 0.91, and is approximately normal. 
 
 
 Calculate 95% Confidence Interval. 
@@ -190,6 +191,20 @@ CI_rsquared = r_squared_boot %>%
 
 
 The confidence interval for r-squared is (0.8941777- 0.9271884).
+
+```{r}
+r_squared_boot2 = boot_straps %>% 
+  mutate(
+    models = map(strap_sample, ~lm(tmax ~ tmin, data = .x)), 
+    results = map(models, broom::tidy)) %>% 
+  select(strap_sample, term, estimate) %>% 
+  pivot_wider(names_from = term, values_from = estimate) %>% 
+  mutate(logbeta = log(beta0*tmin)) 
+  unnest(results)
+r_squared_boot
+```
+
+
 
 
 

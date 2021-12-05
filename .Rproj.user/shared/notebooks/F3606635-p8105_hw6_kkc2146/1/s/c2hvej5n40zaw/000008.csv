@@ -1,0 +1,11 @@
+"0","r_squared_boot2 = boot_straps %>% "
+"0","  mutate("
+"0","    models = map(strap_sample, ~lm(tmax ~ tmin, data = .x)), "
+"0","    results = map(models, broom::tidy)) %>% "
+"0","  select(strap_sample, term, estimate) %>% "
+"0","  pivot_wider(names_from = term, values_from = estimate) %>% "
+"0","  mutate(logbeta = log(beta0*tmin)) "
+"2","Error: Can't subset columns that don't exist.
+[31mx[39m Column `term` doesn't exist.
+[90mRun `rlang::last_error()` to see where the error occurred.[39m
+"
